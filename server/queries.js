@@ -55,8 +55,7 @@ const createUser = async (req, res, next) => {
     const salt = await bcrypt.genSalt(10)
     //console.log('register-salt ', salt);
     const hash = await bcrypt.hash(req.body.password, salt);
-    console.log('register-hash ', hash);
-    console.log(hash.length());
+    //console.log('register-hash ', hash);
     pool.query(`INSERT INTO users (id, username, password) VALUES (${req.body.id}, '${req.body.username}', '${hash}')`, (err, result) => {
         if(err){
             console.log(err)
